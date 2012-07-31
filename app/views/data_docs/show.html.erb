@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @data_doc.url %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @data_doc.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_data_doc_path(@data_doc) %> |
+<%= link_to 'Back', data_docs_path %>

@@ -1,0 +1,83 @@
+class DateStoresController < ApplicationController
+  # GET /date_stores
+  # GET /date_stores.json
+  def index
+    @date_stores = DateStore.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @date_stores }
+    end
+  end
+
+  # GET /date_stores/1
+  # GET /date_stores/1.json
+  def show
+    @date_store = DateStore.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @date_store }
+    end
+  end
+
+  # GET /date_stores/new
+  # GET /date_stores/new.json
+  def new
+    @date_store = DateStore.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @date_store }
+    end
+  end
+
+  # GET /date_stores/1/edit
+  def edit
+    @date_store = DateStore.find(params[:id])
+  end
+
+  # POST /date_stores
+  # POST /date_stores.json
+  def create
+    @date_store = DateStore.new(params[:date_store])
+
+    respond_to do |format|
+      if @date_store.save
+        format.html { redirect_to @date_store, notice: 'Date store was successfully created.' }
+        format.json { render json: @date_store, status: :created, location: @date_store }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @date_store.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /date_stores/1
+  # PUT /date_stores/1.json
+  def update
+    @date_store = DateStore.find(params[:id])
+
+    respond_to do |format|
+      if @date_store.update_attributes(params[:date_store])
+        format.html { redirect_to @date_store, notice: 'Date store was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @date_store.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /date_stores/1
+  # DELETE /date_stores/1.json
+  def destroy
+    @date_store = DateStore.find(params[:id])
+    @date_store.destroy
+
+    respond_to do |format|
+      format.html { redirect_to date_stores_url }
+      format.json { head :no_content }
+    end
+  end
+end

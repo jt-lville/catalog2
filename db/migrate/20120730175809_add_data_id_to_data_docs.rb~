@@ -1,0 +1,5 @@
+class AddDataIdToDataDocs < ActiveRecord::Migration
+  def change
+	  add_column :data_docs, :data_id, :integer
+  end
+end

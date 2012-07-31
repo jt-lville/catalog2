@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: 
+  coverage: 
+  status: 
+  frequency: 
+  history_start: 
+  history_end: 
+  sample_start: 
+  sample_end: 
+  cost_amount: 
+  cost_frequency: MyString
+
+two:
+  description: 
+  coverage: 
+  status: 
+  frequency: 
+  history_start: 
+  history_end: 
+  sample_start: 
+  sample_end: 
+  cost_amount: 
+  cost_frequency: MyString

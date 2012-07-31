@@ -1,0 +1,6 @@
+class AddProviderIdAndTypeIdToDataSources < ActiveRecord::Migration
+  def change
+	  add_column :data_sources, :provider_id, :integer
+	  add_column :data_sources, :type_id, :integer
+  end
+end

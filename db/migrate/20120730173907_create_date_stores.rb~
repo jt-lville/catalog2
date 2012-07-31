@@ -1,0 +1,12 @@
+class CreateDateStores < ActiveRecord::Migration
+  def change
+    create_table :date_stores do |t|
+      t.string :type
+      t.string :location
+      t.string :access_method
+      t.string :owner
+
+      t.timestamps
+    end
+  end
+end

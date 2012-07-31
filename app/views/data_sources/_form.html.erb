@@ -1,0 +1,57 @@
+<%= form_for(@data_source) do |f| %>
+  <% if @data_source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@data_source.errors.count, "error") %> prohibited this data_source from being saved:</h2>
+
+      <ul>
+      <% @data_source.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :coverage %><br />
+    <%= f.text_field :coverage %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :frequency %><br />
+    <%= f.text_field :frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :history_start %><br />
+    <%= f.text_field :history_start %>
+  </div>
+  <div class="field">
+    <%= f.label :history_end %><br />
+    <%= f.text_field :history_end %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_start %><br />
+    <%= f.text_field :sample_start %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_end %><br />
+    <%= f.text_field :sample_end %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_amount %><br />
+    <%= f.text_field :cost_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :cost_frequency %><br />
+    <%= f.text_field :cost_frequency %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

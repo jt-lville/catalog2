@@ -1,0 +1,59 @@
+How to get has-a relationships working in Rails
+
+Suppose that a Post has-many Comments
+
+0. Add the relationship in the model
+
+	go to app/models/post.rb
+
+	insert the line "has_many :comments"
+
+	go to app/models/comment.rb
+
+	insert the line "belongs_to :post
+
+1. Add a post_id to the Comments table
+
+	execute in the rails console "rails generate migration AddPostIdToComments"
+
+	go to db/migrate and look for the add_post_id_to_comments.rb file
+
+	edit the file and substitute the "def change" block with this
+
+	  def change
+	   add_column :comments, :post_id, :integer
+ 	  end
+
+	after you do this, run "rake db:migrate". If you receive a "post_id column not found" error, try running "rake db:drop", "rake db:create", and "rake db:migrate" once again.
+
+2. Tell Ruby on Rails to use convention over configuration
+
+	go to config/routes.rb and you will see a part that says
+
+		resources :posts
+		resources :comments
+
+	erase both of these lines and replace them with
+
+		resources :posts do
+			resources :comments
+		end
+
+	This tells rails to use convention over configuration methods such as comment_post_path
+
+3. At this point, you are essentially done, but now it might be convenient to alter the HTML files.
+
+Insert this in app/views/posts/show.html.erb
+
+<%= form_for([@post, @post.comments.create]) do |f| %> 
+	<%= f.text_area :content, :placeholder => "content here"%>
+
+	<button type="submit" class='btn'>Submit New Data Doc</button>
+<% end %>
+
+@post is the post you're currently viewing
+@post.comments is the list of comments for @post
+create is a creation method
+f.text_area :content refers to the content data attribute associated with a given comment. This is important; you'll want to replace it with whatever other attribuets you might want to edit later. E.g., f.text_area :url corresponds to a field called "url".
+
+

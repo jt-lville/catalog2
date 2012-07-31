@@ -1,0 +1,5 @@
+class AddDataIdToDataStores < ActiveRecord::Migration
+  def change
+	   add_column :data_stores, :data_id, :integer
+  end
+end

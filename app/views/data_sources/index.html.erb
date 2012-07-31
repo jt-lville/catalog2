@@ -1,0 +1,41 @@
+<h1>Listing data_sources</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Coverage</th>
+    <th>Status</th>
+    <th>Frequency</th>
+    <th>History start</th>
+    <th>History end</th>
+    <th>Sample start</th>
+    <th>Sample end</th>
+    <th>Cost amount</th>
+    <th>Cost frequency</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @data_sources.each do |data_source| %>
+  <tr>
+    <td><%= data_source.description %></td>
+    <td><%= data_source.coverage %></td>
+    <td><%= data_source.status %></td>
+    <td><%= data_source.frequency %></td>
+    <td><%= data_source.history_start %></td>
+    <td><%= data_source.history_end %></td>
+    <td><%= data_source.sample_start %></td>
+    <td><%= data_source.sample_end %></td>
+    <td><%= data_source.cost_amount %></td>
+    <td><%= data_source.cost_frequency %></td>
+    <td><%= link_to 'Show', data_source %></td>
+    <td><%= link_to 'Edit', edit_data_source_path(data_source) %></td>
+    <td><%= link_to 'Destroy', data_source, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Data source', new_data_source_path %>

@@ -1,0 +1,107 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Information</h1>
+
+<p>
+  <b>Description:</b>
+  <%= @data_source.description %>
+</p>
+
+<p>
+  <b>Coverage:</b>
+  <%= @data_source.coverage %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @data_source.status %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%= @data_source.frequency %>
+</p>
+
+<p>
+  <b>History start:</b>
+  <%= @data_source.history_start %>
+</p>
+
+<p>
+  <b>History end:</b>
+  <%= @data_source.history_end %>
+</p>
+
+<p>
+  <b>Sample start:</b>
+  <%= @data_source.sample_start %>
+</p>
+
+<p>
+  <b>Sample end:</b>
+  <%= @data_source.sample_end %>
+</p>
+
+<p>
+  <b>Cost amount:</b>
+  <%= @data_source.cost_amount %>
+</p>
+
+<p>
+  <b>Cost frequency:</b>
+  <%= @data_source.cost_frequency %>
+</p>
+
+<h2>Docs</h2>
+
+<%= form_for([@data_source, @data_source.data_docs.create]) do |f| %>
+	<%= f.text_field :url, :placeholder => "url"%>
+	<%= f.text_field :level, :placeholder => "level"%>
+<div class='submitter'><button type="submit" class='btn'>Submit New Data Doc</button></div>
+<% end %>
+
+<h2>Provider</h2>
+
+<%= form_for([@data_source, @data_source.data_providers.create]) do |f| %>
+	<%= f.text_field :url, :placeholder => "url"%>
+	<%= f.text_field :email, :placeholder => "email"%>
+	<%= f.text_field :contact, :placeholder => "contact"%>
+	<%= f.text_field :phone, :placeholder => "phone"%>
+
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Provider</button></div>
+<% end %>
+
+<h2>Type</h2>
+
+<%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
+	<%= f.text_area :description, :placeholder => "description"%>
+
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Type</button></div>
+<% end %>
+
+
+<h2>Data Stores</h2>
+
+<%= form_for([@data_source, @data_source.data_stores.create]) do |f| %>
+	<%= f.text_field :type, :placeholder => "type"%>
+	<%= f.text_field :location, :placeholder => "location"%>
+	<%= f.text_field :access_method, :placeholder => "access_method"%>
+	<%= f.text_field :owner, :placeholder => "owner"%>
+
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Store</button></div>
+<% end %>
+
+<h2>Data Notes</h2>
+
+
+<%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
+
+	<%= f.text_field :date, :placeholder => "date"%>
+	<%= f.text_field :user, :placeholder => "user"%></br>
+	<%= f.text_area :text, :placeholder => "text"%>
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Note</button></div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_data_source_path(@data_source) %> |
+<%= link_to 'Back', data_sources_path %>
