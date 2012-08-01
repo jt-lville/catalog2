@@ -27,4 +27,3 @@
 <br />
 
 <%= link_to 'New Data provider', new_data_provider_path %>
-<%= link_to 'Back', data_sources_path %>
