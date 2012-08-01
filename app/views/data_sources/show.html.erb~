@@ -58,9 +58,9 @@
   <tr>
     <td><%= data_doc.url %></td>
     <td><%= data_doc.level %></td>
-    <td><%= link_to 'Show', data_source_data_doc %></td>
-    <td><%= link_to 'Edit', edit_data_doc_path(data_doc) %></td>
-    <td><%= link_to 'Destroy', data_doc, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%#= link_to 'Show', data_source_data_doc %></td>
+    <td><%#= link_to 'Edit', edit_data_doc_path(data_doc) %></td>
+    <td><%#= link_to 'Destroy', data_doc, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -78,9 +78,9 @@
     <td><%= data_provider.email %></td>
     <td><%= data_provider.contact %></td>
     <td><%= data_provider.phone %></td>
-    <td><%= link_to 'Show', data_provider %></td>
-    <td><%= link_to 'Edit', edit_data_provider_path(data_provider) %></td>
-    <td><%= link_to 'Destroy', data_provider, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%#= link_to 'Show', data_provider %></td>
+    <td><%#= link_to 'Edit', edit_data_provider_path(data_provider) %></td>
+    <td><%#= link_to 'Destroy', data_provider, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -98,9 +98,9 @@
 <% @data_source.data_types.each do |data_type| %>
   <tr>
     <td><%= data_type.description %></td>
-    <td><%= link_to 'Show', data_type %></td>
-    <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
-    <td><%= link_to 'Destroy', data_type, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%#= link_to 'Show', data_type %></td>
+    <td><%#= link_to 'Edit', edit_data_type_path(data_type) %></td>
+    <td><%#= link_to 'Destroy', data_type, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -114,10 +114,14 @@
 <h2>Data Stores</h2>
 
 <% @data_source.data_stores.each do |data_store| %>
-  <tr>
-    <td><%= link_to 'Show', data_store %></td>
-    <td><%= link_to 'Edit', edit_data_store_path(data_store) %></td>
-    <td><%= link_to 'Destroy', data_store, confirm: 'Are you sure?', method: :delete %></td>
+	<tr>
+		<td><%= data_store.type %></td>
+		<td><%= data_store.location %></td>
+		<td><%= data_store.access_method %></td>
+		<td><%= data_store.owner %></td>
+    <td><%#= link_to 'Show', data_store %></td>
+    <td><%#= link_to 'Edit', edit_data_store_path(data_store) %></td>
+    <td><%#= link_to 'Destroy', data_store, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -132,6 +136,15 @@
 
 <h2>Data Notes</h2>
 
+<% @data_source.data_notes.each do |data_note| %>
+  <tr>
+    <td><%= data_note.text %></td>
+    <td><%= data_note.string %></td>
+    <td><%#= link_to 'Show', data_note %></td>
+    <td><%#= link_to 'Edit', edit_data_note_path(data_note) %></td>
+    <td><%#= link_to 'Destroy', data_note, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
 
 <%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
 
