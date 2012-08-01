@@ -105,10 +105,14 @@
   </tr>
 <% end %>
 
+<% if @data_source.data_types.size == 0 %>
+
 <%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
 	<%= f.text_area :description, :placeholder => "description"%>
 
 	<%= f.submit %>
+<% end %>
+
 <% end %>
 
 
@@ -139,17 +143,16 @@
 
 <% @data_source.data_notes.each do |data_note| %>
   
-	<%= data_note.text %>
-	</br>
-    <%= data_note.date %>
-    </br>
-    <%= data_note.user %>
-    </br>
+<%= data_note.text %>
+<%= data_note.date %>
+  <%= data_note.user %>
+ 
     <%#= link_to 'Show', data_note %>
     <%#= link_to 'Edit', edit_data_note_path(data_note) %>
     <%#= link_to 'Destroy', data_note, confirm: 'Are you sure?', method: :delete %>
- </br>
+
 <% end %>
+
 
 <%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
 

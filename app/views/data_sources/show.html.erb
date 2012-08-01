@@ -105,11 +105,15 @@
   </tr>
 <% end %>
 
+<%# if @data_source.data_types.size == 0 %>
+
 <%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
 	<%= f.text_area :description, :placeholder => "description"%>
 
 	<%= f.submit %>
 <% end %>
+
+<%# end %>
 
 
 <h2>Data Stores</h2>
@@ -148,6 +152,7 @@
     <%#= link_to 'Destroy', data_note, confirm: 'Are you sure?', method: :delete %>
 
 <% end %>
+
 
 <%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
 

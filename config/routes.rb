@@ -3,12 +3,13 @@ Catalog::Application.routes.draw do
   resources :data_sources do
 
 	resources :data_docs
-	resources :data_providers
 	resources :data_notes
-	resources :data_types
   	resources :data_stores
 
   end
+
+  resources :data_providers
+  resources :data_types
 
   get "home/index"
   root :to => "home#index"

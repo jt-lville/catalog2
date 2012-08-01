@@ -38,7 +38,4 @@
 
 <br />
 
-<%= link_to 'New Data source', new_data_source_path %></br>
-
-<%= link_to 'New Data type', new_data_type_path %></br>
-<%= link_to 'New Data provider', new_data_provider_path %></br>
+<%= link_to 'New Data source', new_data_source_path %>
