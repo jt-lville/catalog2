@@ -73,7 +73,7 @@
 
 <h2>Provider</h2>
 
-<% @data_source.data_providers.each do |data_provider| %>
+<% data_provider = @data_source.data_provider %>
   <tr>
     <td><%= data_provider.url %></td>
     <td><%= data_provider.email %></td>
@@ -83,38 +83,21 @@
     <%#= link_to 'Edit', edit_data_provider_path(data_provider) %>
     <%#= link_to 'Destroy', data_provider, confirm: 'Are you sure?', method: :delete %>
   </tr>
-<% end %>
-
-<%= form_for([@data_source, @data_source.data_providers.create]) do |f| %>
-	<%= f.text_field :url, :placeholder => "url"%>
-	<%= f.text_field :email, :placeholder => "email"%>
-	<%= f.text_field :contact, :placeholder => "contact"%>
-	<%= f.text_field :phone, :placeholder => "phone"%>
-
-	<%= f.submit %>
-<% end %>
 
 <h2>Type</h2>
 
-<% @data_source.data_types.each do |data_type| %>
+<% data_type = @data_source.data_type %>
   <tr>
     <td><%= data_type.description %></td>
    <%#= link_to 'Show', data_type %>
     <%#= link_to 'Edit', edit_data_type_path(data_type) %>
     <%#= link_to 'Destroy', data_type, confirm: 'Are you sure?', method: :delete %>
   </tr>
-<% end %>
 
-<% if @data_source.data_types.size == 0 %>
-
-<%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
-	<%= f.text_area :description, :placeholder => "description"%>
-
+  <%= form_for(@data_source) do |f| %>
+	<%= f.text_field :data_type_id, :placeholder => "data type id"%>
 	<%= f.submit %>
 <% end %>
-
-<% end %>
-
 
 <h2>Data Stores</h2>
 

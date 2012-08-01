@@ -1,7 +1,7 @@
 class DataSource < ActiveRecord::Base
 	has_many :data_docs
 
-	has_one :data_providers
+	has_one :data_provider
 	has_one :data_type
 
 	has_many :data_stores
