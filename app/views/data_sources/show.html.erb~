@@ -58,7 +58,9 @@
   <tr>
     <td><%= data_doc.url %></td>
     <td><%= data_doc.level %></td>
-   </td>
+    <td><%= link_to 'Show', data_source_data_doc %></td>
+    <td><%= link_to 'Edit', edit_data_doc_path(data_doc) %></td>
+    <td><%= link_to 'Destroy', data_doc, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 
@@ -66,6 +68,77 @@
 	<%= f.text_field :url, :placeholder => "url"%>
 	<%= f.text_field :level, :placeholder => "level"%>
 	<%= f.submit %>
+<% end %>
+
+<h2>Provider</h2>
+
+<% @data_source.data_providers.each do |data_provider| %>
+  <tr>
+    <td><%= data_provider.url %></td>
+    <td><%= data_provider.email %></td>
+    <td><%= data_provider.contact %></td>
+    <td><%= data_provider.phone %></td>
+    <td><%= link_to 'Show', data_provider %></td>
+    <td><%= link_to 'Edit', edit_data_provider_path(data_provider) %></td>
+    <td><%= link_to 'Destroy', data_provider, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
+<%= form_for([@data_source, @data_source.data_providers.create]) do |f| %>
+	<%= f.text_field :url, :placeholder => "url"%>
+	<%= f.text_field :email, :placeholder => "email"%>
+	<%= f.text_field :contact, :placeholder => "contact"%>
+	<%= f.text_field :phone, :placeholder => "phone"%>
+
+	<%= f.submit %>
+<% end %>
+
+<h2>Type</h2>
+
+<% @data_source.data_types.each do |data_type| %>
+  <tr>
+    <td><%= data_type.description %></td>
+    <td><%= link_to 'Show', data_type %></td>
+    <td><%= link_to 'Edit', edit_data_type_path(data_type) %></td>
+    <td><%= link_to 'Destroy', data_type, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
+<%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
+	<%= f.text_area :description, :placeholder => "description"%>
+
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Type</button></div>
+<% end %>
+
+
+<h2>Data Stores</h2>
+
+<% @data_source.data_stores.each do |data_store| %>
+  <tr>
+    <td><%= link_to 'Show', data_store %></td>
+    <td><%= link_to 'Edit', edit_data_store_path(data_store) %></td>
+    <td><%= link_to 'Destroy', data_store, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
+<%= form_for([@data_source, @data_source.data_stores.create]) do |f| %>
+	<%= f.text_field :type, :placeholder => "type"%>
+	<%= f.text_field :location, :placeholder => "location"%>
+	<%= f.text_field :access_method, :placeholder => "access_method"%>
+	<%= f.text_field :owner, :placeholder => "owner"%>
+
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Store</button></div>
+<% end %>
+
+<h2>Data Notes</h2>
+
+
+<%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
+
+	<%= f.text_field :date, :placeholder => "date"%>
+	<%= f.text_field :user, :placeholder => "user"%></br>
+	<%= f.text_area :text, :placeholder => "text"%>
+	<div class='submitter'><button type="submit" class='btn'>Submit New Data Note</button></div>
 <% end %>
 
 
