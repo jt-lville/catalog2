@@ -60,7 +60,7 @@ class DataStoresController < ApplicationController
 
     respond_to do |format|
       if @data_store.update_attributes(params[:data_store])
-        format.html { redirect_to @data_store, notice: 'Data store was successfully updated.' }
+        format.html { redirect_to @data_store.data_source, notice: 'Data store was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

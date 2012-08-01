@@ -1,17 +1,17 @@
 class DataStoresController < ApplicationController
-  # GET /date_stores
-  # GET /date_stores.json
+  # GET /data_stores
+  # GET /data_stores.json
   def index
-    @data_store = DateStore.all
+    @data_stores = DataStore.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @data_store }
+      format.json { render json: @data_stores }
     end
   end
 
-  # GET /date_stores/1
-  # GET /date_stores/1.json
+  # GET /data_stores/1
+  # GET /data_stores/1.json
   def show
     @data_store = DataStore.find(params[:id])
 
@@ -21,8 +21,8 @@ class DataStoresController < ApplicationController
     end
   end
 
-  # GET /date_stores/new
-  # GET /date_stores/new.json
+  # GET /data_stores/new
+  # GET /data_stores/new.json
   def new
     @data_store = DataStore.new
 
@@ -32,19 +32,19 @@ class DataStoresController < ApplicationController
     end
   end
 
-  # GET /date_stores/1/edit
+  # GET /data_stores/1/edit
   def edit
     @data_store = DataStore.find(params[:id])
   end
 
-  # POST /date_stores
-  # POST /date_stores.json
+  # POST /data_stores
+  # POST /data_stores.json
   def create
-    @data_store = DataStore.new(params[:date_store])
+    @data_store = DataStore.new(params[:data_store])
 
     respond_to do |format|
       if @data_store.save
-        format.html { redirect_to @data_store, notice: 'Date store was successfully created.' }
+        format.html { redirect_to @data_store, notice: 'Data store was successfully created.' }
         format.json { render json: @data_store, status: :created, location: @data_store }
       else
         format.html { render action: "new" }
@@ -53,14 +53,14 @@ class DataStoresController < ApplicationController
     end
   end
 
-  # PUT /date_stores/1
-  # PUT /date_stores/1.json
+  # PUT /data_stores/1
+  # PUT /data_stores/1.json
   def update
-    @data_store = DateStore.find(params[:id])
+    @data_store = DataStore.find(params[:id])
 
     respond_to do |format|
-      if @data_store.update_attributes(params[:date_store])
-        format.html { redirect_to @data_store, notice: 'Date stora was successfully updated.' }
+      if @data_store.update_attributes(params[:data_store])
+        format.html { redirect_to @data_store, notice: 'Data store was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,8 +69,8 @@ class DataStoresController < ApplicationController
     end
   end
 
-  # DELETE /date_stores/1
-  # DELETE /date_stores/1.json
+  # DELETE /data_stores/1
+  # DELETE /data_stores/1.json
   def destroy
     @data_store = DataStore.find(params[:id])
     @data_store.destroy

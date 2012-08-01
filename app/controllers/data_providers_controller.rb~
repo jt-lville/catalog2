@@ -60,7 +60,7 @@ class DataProvidersController < ApplicationController
 
     respond_to do |format|
       if @data_provider.update_attributes(params[:data_provider])
-        format.html { redirect_to @data_provider.data_source, notice: 'Data provider was successfully updated.' }
+        format.html { redirect_to @data_provider, notice: 'Data provider was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
