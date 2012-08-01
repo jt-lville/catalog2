@@ -40,17 +40,11 @@ class DataNotesController < ApplicationController
   # POST /data_notes
   # POST /data_notes.json
   def create
-    @data_note = DataNote.new(params[:data_note])
+    @data_source = DataSource.find(params[:data_source_id])
 
-    respond_to do |format|
-      if @data_note.save
-        format.html { redirect_to @data_note, notice: 'Data note was successfully created.' }
-        format.json { render json: @data_note, status: :created, location: @data_note }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @data_note.errors, status: :unprocessable_entity }
-      end
-    end
+    @data_note = @data_source.data_notes.create(params[:data_note])
+
+    redirect_to data_source_path(@data_source)
   end
 
   # PUT /data_notes/1
@@ -76,7 +70,7 @@ class DataNotesController < ApplicationController
     @data_note.destroy
 
     respond_to do |format|
-      format.html { redirect_to data_notes_url }
+      format.html { redirect_to data_sources_url }
       format.json { head :no_content }
     end
   end

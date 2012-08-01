@@ -15,6 +15,9 @@ class DataSourcesController < ApplicationController
   def show
     @data_source = DataSource.find(params[:id])
 
+    @data_source.data_type_id = 1 if @data_source.data_type_id == nil
+    @data_source.data_provider_id = 1 if @data_source.data_provider_id == nil
+
     @data_type = DataType.find_by_id(@data_source.data_type_id)
     @data_provider = DataProvider.find_by_id(@data_source.data_provider_id)
 
@@ -47,7 +50,7 @@ class DataSourcesController < ApplicationController
 
     respond_to do |format|
       if @data_source.save
-        format.html { redirect_to @data_source, notice: 'Data source was successfully created.' }
+        format.html { redirect_to data_sources_url, notice: 'Data source was successfully created.' }
         format.json { render json: @data_source, status: :created, location: @data_source }
       else
         format.html { render action: "new" }

@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @data_store %> |
-<%= link_to 'Back', data_sources_path %>
+<%= link_to 'Back', data_stores_path %>

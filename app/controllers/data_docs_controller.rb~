@@ -40,17 +40,11 @@ class DataDocsController < ApplicationController
   # POST /data_docs
   # POST /data_docs.json
   def create
-    @data_doc = DataDoc.new(params[:data_doc])
 
-    respond_to do |format|
-      if @data_doc.save
-        format.html { redirect_to @data_doc, notice: 'Data doc was successfully created.' }
-        format.json { render json: @data_doc, status: :created, location: @data_doc }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @data_doc.errors, status: :unprocessable_entity }
-      end
-    end
+    @data_source = DataSource.find(params[:data_source_id])
+    @data_doc = @data_source.data_docs.create(params[:data_doc])
+    redirect_to post_path(@data_source)
+
   end
 
   # PUT /data_docs/1
@@ -60,7 +54,7 @@ class DataDocsController < ApplicationController
 
     respond_to do |format|
       if @data_doc.update_attributes(params[:data_doc])
-        format.html { redirect_to @data_doc.data_source, notice: 'Data doc was successfully updated.' }
+        format.html { redirect_to @data_doc, notice: 'Data doc was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +70,7 @@ class DataDocsController < ApplicationController
     @data_doc.destroy
 
     respond_to do |format|
-      format.html { redirect_to data_docs_url }
+      format.html { redirect_to data_sources_url }
       format.json { head :no_content }
     end
   end

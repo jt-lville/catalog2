@@ -40,17 +40,11 @@ class DataStoresController < ApplicationController
   # POST /data_stores
   # POST /data_stores.json
   def create
-    @data_store = DataStore.new(params[:data_store])
+    @data_source = DataSource.find(params[:data_source_id])
 
-    respond_to do |format|
-      if @data_store.save
-        format.html { redirect_to @data_store, notice: 'Data store was successfully created.' }
-        format.json { render json: @data_store, status: :created, location: @data_store }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @data_store.errors, status: :unprocessable_entity }
-      end
-    end
+    @data_store = @data_source.data_stores.create(params[:data_store])
+
+    redirect_to data_source_path(@data_source)
   end
 
   # PUT /data_stores/1
@@ -76,7 +70,7 @@ class DataStoresController < ApplicationController
     @data_store.destroy
 
     respond_to do |format|
-      format.html { redirect_to data_stores_url }
+      format.html { redirect_to data_sources_url }
       format.json { head :no_content }
     end
   end

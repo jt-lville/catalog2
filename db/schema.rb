@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20120731193249) do
   end
 
   create_table "data_stores", :force => true do |t|
-    t.string   "type"
+    t.string   "type_name"
     t.string   "location"
     t.string   "access_method"
     t.string   "owner"

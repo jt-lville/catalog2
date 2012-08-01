@@ -1,7 +1,7 @@
 class CreateDataStores < ActiveRecord::Migration
   def change
     create_table :data_stores do |t|
-      t.string :type
+      t.string :type_name
       t.string :location
       t.string :access_method
       t.string :owner

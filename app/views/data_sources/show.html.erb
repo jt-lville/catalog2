@@ -58,11 +58,12 @@
 
     <%= data_doc.url %>
     <%= data_doc.level %>
-    <%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_docs/"+data_doc.id.to_s %></br>
+    <%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_docs/"+data_doc.id.to_s %>
+    <%= link_to "Delete", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_docs/"+data_doc.id.to_s, :confirm => "Are you sure?", :method => :delete %></br>
 
 <% end %>
 
-<%= form_for([@data_source, @data_source.data_docs.create]) do |f| %>
+<%= form_for([@data_source, @data_source.data_docs.build]) do |f| %>
 	<%= f.text_field :url, :placeholder => "url"%>
 	<%= f.text_field :level, :placeholder => "level"%>
 	<%= f.submit %>
@@ -100,19 +101,20 @@
 
 <% @data_source.data_stores.each do |data_store| %>
 
-		<%= data_store.type %>
+		<%= data_store.type_name %>
 		<%= data_store.location %>
 		<%= data_store.access_method %>
 		<%= data_store.owner %>
-		<%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_stores/"+data_store.id.to_s %></br>
+		<%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_stores/"+data_store.id.to_s %>
+		<%= link_to "Delete", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_stores/"+data_store.id.to_s, confirm: 'Are you sure?', method: :delete %></br>
     <%#= link_to 'Show', data_store %>
     <%#= link_to 'Edit', edit_data_store_path(data_store) %>
     <%#= link_to 'Destroy', data_store, confirm: 'Are you sure?', method: :delete %>
 
 <% end %>
 
-<%= form_for([@data_source, @data_source.data_stores.create]) do |f| %>
-	<%= f.text_field :type, :placeholder => "type"%>
+<%= form_for([@data_source, @data_source.data_stores.build]) do |f| %>
+	<%= f.text_field :type_name, :placeholder => "type name"%>
 	<%= f.text_field :location, :placeholder => "location"%>
 	<%= f.text_field :access_method, :placeholder => "access_method"%>
 	<%= f.text_field :owner, :placeholder => "owner"%>
@@ -127,7 +129,8 @@
 <%= data_note.text %>
 <%= data_note.date %>
 <%= data_note.user %>
-    <%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_notes/"+data_note.id.to_s %></br>
+<%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_notes/"+data_note.id.to_s %>
+<%= link_to "Delete", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_notes/"+data_note.id.to_s, :confirm => "Are you sure?", :method => :delete %></br>
  
     <%#= link_to 'Show', data_note %>
     <%#= link_to 'Edit', edit_data_note_path(data_note) %>
@@ -136,7 +139,7 @@
 <% end %>
 
 
-<%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
+<%= form_for([@data_source, @data_source.data_notes.build]) do |f| %>
 
 	<%= f.text_field :date, :placeholder => "date"%>
 	<%= f.text_field :user, :placeholder => "user"%></br>
