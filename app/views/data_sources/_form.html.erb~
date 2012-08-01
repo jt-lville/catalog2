@@ -59,7 +59,7 @@
 
     <div class="field">
     <%= f.label :data_type_id %><br />
-    <%= f.text_field :data_type_id %>
+    <%= f.text_field :data_provider_id %>
   </div>
 
   <div class="actions">

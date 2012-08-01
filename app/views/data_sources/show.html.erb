@@ -73,12 +73,11 @@
 
 <h2>Provider</h2>
 
-<% data_provider = @data_source.data_provider %>
   <tr>
-    <td><%= data_provider.url %></td>
-    <td><%= data_provider.email %></td>
-    <td><%= data_provider.contact %></td>
-    <td><%= data_provider.phone %></td>
+    <td><%= @data_provider.url %></td>
+    <td><%= @data_provider.email %></td>
+    <td><%= @data_provider.contact %></td>
+    <td><%= @data_provider.phone %></td>
     <%#= link_to 'Show', data_provider %>
     <%#= link_to 'Edit', edit_data_provider_path(data_provider) %>
     <%#= link_to 'Destroy', data_provider, confirm: 'Are you sure?', method: :delete %>
@@ -90,10 +89,8 @@
 <% end %>
 
 <h2>Type</h2>
-
-<% data_type = @data_source.data_type %>
   <tr>
-    <td><%= data_type.description %></td>
+    <td><%= @data_type.description %></td>
    <%#= link_to 'Show', data_type %>
     <%#= link_to 'Edit', edit_data_type_path(data_type) %>
     <%#= link_to 'Destroy', data_type, confirm: 'Are you sure?', method: :delete %>
@@ -102,7 +99,7 @@
   <%= form_for(@data_source) do |f| %>
 	<%= f.text_field :data_type_id, :placeholder => "data type id"%>
 	<%= f.submit %>
-<% end %>
+   <% end %>
 
 <h2>Data Stores</h2>
 

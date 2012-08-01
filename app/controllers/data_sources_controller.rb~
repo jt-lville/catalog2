@@ -16,7 +16,7 @@ class DataSourcesController < ApplicationController
     @data_source = DataSource.find(params[:id])
 
     @data_type = DataType.find_by_id(@data_source.data_type_id)
-    @data_provider = DataProvider.find_by_id(@data_source.data_provider_id)
+	
 
     respond_to do |format|
       format.html # show.html.erb
