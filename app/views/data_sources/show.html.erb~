@@ -55,13 +55,10 @@
 <h2>Docs</h2>
 
 <% @data_source.data_docs.each do |data_doc| %>
-  <tr>
-    <td><%= data_doc.url %></td>
-    <td><%= data_doc.level %></td>
-    <%#= link_to 'Show', data_source_data_doc %>
-    <%#= link_to 'Edit', edit_data_doc_path(data_doc) %>
-    <%#= link_to 'Destroy', data_doc, confirm: 'Are you sure?', method: :delete %>
-  </tr>
+
+    <%= data_doc.url %>
+    <%= data_doc.level %>
+    <%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_docs/"+data_doc.id.to_s %></br>
 
 <% end %>
 
@@ -73,15 +70,13 @@
 
 <h2>Provider</h2>
 
-  <tr>
-    <td><%= @data_provider.url %></td>
-    <td><%= @data_provider.email %></td>
-    <td><%= @data_provider.contact %></td>
-    <td><%= @data_provider.phone %></td>
+    <%= @data_provider.url %>
+    <%= @data_provider.email %>
+    <%= @data_provider.contact %>
+    <%= @data_provider.phone %>
     <%= link_to 'Show', @data_provider %>
     <%= link_to 'Edit', edit_data_provider_path(@data_provider) %>
     <%= link_to 'Destroy', @data_provider, confirm: 'Are you sure?', method: :delete %>
-  </tr>
 
     <%= form_for(@data_source) do |f| %>
 	<%= f.text_field :data_provider_id, :placeholder => "data provider id"%>
@@ -89,12 +84,12 @@
 <% end %>
 
 <h2>Type</h2>
-  <tr>
-	  <td><%= @data_type.description %></td>
-	  
+
+	  <%= @data_type.description %> 
 	  <%= link_to 'Show', @data_type %>
-  <%= link_to 'Edit', edit_data_type_path(@data_type) %>	  <%= link_to 'Destroy', @data_type, confirm: 'Are you sure?', method: :delete %>
-  </tr>
+	  <%= link_to 'Edit', edit_data_type_path(@data_type) %>
+	  <%= link_to 'Destroy', @data_type, confirm: 'Are you sure?', method: :delete %>
+
 
   <%= form_for(@data_source) do |f| %>
 	<%= f.text_field :data_type_id, :placeholder => "data type id"%>
@@ -104,15 +99,16 @@
 <h2>Data Stores</h2>
 
 <% @data_source.data_stores.each do |data_store| %>
-	<tr>
-		<td><%= data_store.type %></td>
-		<td><%= data_store.location %></td>
-		<td><%= data_store.access_method %></td>
-		<td><%= data_store.owner %></td>
+
+		<%= data_store.type %>
+		<%= data_store.location %>
+		<%= data_store.access_method %>
+		<%= data_store.owner %>
+		<%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_stores/"+data_store.id.to_s %></br>
     <%#= link_to 'Show', data_store %>
     <%#= link_to 'Edit', edit_data_store_path(data_store) %>
     <%#= link_to 'Destroy', data_store, confirm: 'Are you sure?', method: :delete %>
-  </tr>
+
 <% end %>
 
 <%= form_for([@data_source, @data_source.data_stores.create]) do |f| %>
@@ -130,7 +126,8 @@
   
 <%= data_note.text %>
 <%= data_note.date %>
-  <%= data_note.user %>
+<%= data_note.user %>
+    <%= link_to "Show", "http://#{request.host}:#{request.port.to_s + request.fullpath}"+"/data_notes/"+data_note.id.to_s %></br>
  
     <%#= link_to 'Show', data_note %>
     <%#= link_to 'Edit', edit_data_note_path(data_note) %>

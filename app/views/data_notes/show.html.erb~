@@ -11,5 +11,5 @@
 </p>
 
 
-<%#= link_to 'Edit', edit_data_note_path(@data_note) %> |
-<%#= link_to 'Back', data_notes_path %>
+<%= link_to 'Edit', edit_data_note_path(@data_note) %> |
+<%= link_to 'Back', data_notes_path %>
