@@ -54,52 +54,18 @@
 
 <h2>Docs</h2>
 
+<% @data_source.data_docs.each do |data_doc| %>
+  <tr>
+    <td><%= data_doc.url %></td>
+    <td><%= data_doc.level %></td>
+   </td>
+  </tr>
+<% end %>
+
 <%= form_for([@data_source, @data_source.data_docs.create]) do |f| %>
 	<%= f.text_field :url, :placeholder => "url"%>
 	<%= f.text_field :level, :placeholder => "level"%>
-<div class='submitter'><button type="submit" class='btn'>Submit New Data Doc</button></div>
-<% end %>
-
-<h2>Provider</h2>
-
-<%= form_for([@data_source, @data_source.data_providers.create]) do |f| %>
-	<%= f.text_field :url, :placeholder => "url"%>
-	<%= f.text_field :email, :placeholder => "email"%>
-	<%= f.text_field :contact, :placeholder => "contact"%>
-	<%= f.text_field :phone, :placeholder => "phone"%>
-
-	<div class='submitter'><button type="submit" class='btn'>Submit New Data Provider</button></div>
-<% end %>
-
-<h2>Type</h2>
-
-<%= form_for([@data_source, @data_source.data_types.create]) do |f| %>
-	<%= f.text_area :description, :placeholder => "description"%>
-
-	<div class='submitter'><button type="submit" class='btn'>Submit New Data Type</button></div>
-<% end %>
-
-
-<h2>Data Stores</h2>
-
-<%= form_for([@data_source, @data_source.data_stores.create]) do |f| %>
-	<%= f.text_field :type, :placeholder => "type"%>
-	<%= f.text_field :location, :placeholder => "location"%>
-	<%= f.text_field :access_method, :placeholder => "access_method"%>
-	<%= f.text_field :owner, :placeholder => "owner"%>
-
-	<div class='submitter'><button type="submit" class='btn'>Submit New Data Store</button></div>
-<% end %>
-
-<h2>Data Notes</h2>
-
-
-<%= form_for([@data_source, @data_source.data_notes.create]) do |f| %>
-
-	<%= f.text_field :date, :placeholder => "date"%>
-	<%= f.text_field :user, :placeholder => "user"%>
-	<%= f.text_area :text, :placeholder => "text"%>
-	<div class='submitter'><button type="submit" class='btn'>Submit New Data Note</button></div>
+	<%= f.submit %>
 <% end %>
 
 

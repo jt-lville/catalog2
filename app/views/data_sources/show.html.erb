@@ -54,10 +54,20 @@
 
 <h2>Docs</h2>
 
+<% @data_source.data_docs.each do |data_doc| %>
+  <tr>
+    <td><%= data_doc.url %></td>
+    <td><%= data_doc.level %></td>
+    <td><%= link_to 'Show', data_source_data_doc %></td>
+    <td><%= link_to 'Edit', edit_data_doc_path(data_doc) %></td>
+    <td><%= link_to 'Destroy', data_doc, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+
 <%= form_for([@data_source, @data_source.data_docs.create]) do |f| %>
 	<%= f.text_field :url, :placeholder => "url"%>
 	<%= f.text_field :level, :placeholder => "level"%>
-<div class='submitter'><button type="submit" class='btn'>Submit New Data Doc</button></div>
+	<%= f.submit %>
 <% end %>
 
 <h2>Provider</h2>
@@ -68,7 +78,7 @@
 	<%= f.text_field :contact, :placeholder => "contact"%>
 	<%= f.text_field :phone, :placeholder => "phone"%>
 
-	<div class='submitter'><button type="submit" class='btn'>Submit New Data Provider</button></div>
+	<%= f.submit %>
 <% end %>
 
 <h2>Type</h2>
